@@ -15,7 +15,7 @@ import {Loader} from './Loader'
 
 const HW10 = () => {
     // useSelector, useDispatch // пишет студент
-    let isLoading = useSelector<AppStoreType>(state => state.loading)
+    let isLoading = useSelector<AppStoreType>(state => state.loading.isLoading)
 
     const dispatch = useDispatch()
 
@@ -33,6 +33,7 @@ const HW10 = () => {
 
                 {isLoading ? (
                     <div id={'hw10-loading'}>
+
                         <Loader/>
                     </div>
                 ) : (
