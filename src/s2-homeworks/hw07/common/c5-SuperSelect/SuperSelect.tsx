@@ -29,6 +29,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
                   className={s.option}
                   key={o.id}
                   value={o.id}
+                  onChange={onChangeOption}
               >
                   {o.value}
               </option>
