@@ -14,25 +14,30 @@ import {isString} from "util";
 * 4 - передать пропсы в SuperSelect
 * */
 
-const themes = [
+export type ThemesItemType = {
+    id: number,
+    value: string,
+}
+export type ThemesType = ThemesItemType[]
+
+const themes: ThemesType = [
     {id: 1, value: 'light'},
     {id: 2, value: 'blue'},
     {id: 3, value: 'dark'},
 ]
 
 const HW12 = () => {
-
-    const dispatch = useDispatch()
-    let themeId = String(useSelector<AppStoreType, number>(state => state.theme.themeId))
+    // взять ид темы из редакса
+    const themeId = useSelector<AppStoreType, number>(store => store.theme.themeId);
+    const dispatch = useDispatch();
 
     const change = (id: number) => { // дописать функцию
-        dispatch(changeThemeId(id))
-
-    }
+        dispatch(changeThemeId(id));
+    };
 
     useEffect(() => {
-        document.documentElement.dataset.theme = themeId + ''
-    }, [themeId])
+        document.documentElement.dataset.theme =  +themeId;
+    }, [themeId]);
 
     return (
         <div id={'hw12'}>
@@ -41,20 +46,17 @@ const HW12 = () => {
             </div>
 
             <div className={s2.hw}>
-                <div className={s.hw12}>
-                <span>Выберите тему</span>
+                <div className={s.selectTitle}>Выберите тему</div>
                 <SuperSelect
                     id={'hw12-select-theme'}
                     className={s.select}
-                    options={themes}
-                    onChangeOption={change}
                     // сделать переключение тем
-
+                    onChangeOption={change}
+                    options={themes}
                 />
-                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default HW12
