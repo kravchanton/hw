@@ -36,9 +36,9 @@ const HW12 = () => {
     };
 
     useEffect(() => {
-        document.documentElement.dataset.theme =  +themeId;
+        document.documentElement.dataset.theme =  themeId + ''
+        Number(document.documentElement.dataset.theme)
     }, [themeId]);
-
     return (
         <div id={'hw12'}>
             <div id={'hw12-text'} className={s2.hwTitle}>

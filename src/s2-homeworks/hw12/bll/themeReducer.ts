@@ -10,7 +10,7 @@ export const themeReducer = (state = initState, action: ChangeThemeIdActionType)
     switch (action.type) {
         // дописать
         case 'SET_THEME_ID':
-            return {...state, themeId: action.id}
+            return {...state, themeId: Number(action.id)}
         default:
             return state
     }
